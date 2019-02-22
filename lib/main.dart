@@ -37,10 +37,6 @@ class _MyHomePageState extends State<MyHomePage> {
     height = getHeight(width);
   }
 
-  double getHeight(double width) {
-    return 558.0 * width / 360;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           onScaleUpdate: (scale) {
             setState(() {
-              //print(scale.scale);
               width = (scale.scale / lastScale) * width;
               height = getHeight(width);
               lastScale = scale.scale;
@@ -68,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           child: CustomPaint(
             size: Size(width, height),
-            painter: PeppaPaint(width),
+            painter: PeppaPaint(),
           ),
         ),
       ),
@@ -76,17 +71,16 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+double getHeight(double width) {
+  return 558.0 * width / 360;
+}
+
 class PeppaPaint extends CustomPainter {
-  double width;
-
-  PeppaPaint(double width) {
-    this.width = width;
-  }
-
   @override
   void paint(Canvas canvas, Size size) {
     var width = size.width;
-    var height = size.height;
+    var height = getHeight(size.width);
+    print('${size.width},${size.height}');
     var k = width / 360; //对应标准尺寸下的比例尺
     var paint = Paint()
       ..isAntiAlias = true
