@@ -239,11 +239,11 @@ class PeppaPaint extends CustomPainter {
         paint);
     //画文字
     ParagraphBuilder pb = ParagraphBuilder(ParagraphStyle(
-      textAlign: TextAlign.center,
-      fontWeight: FontWeight.w800,
-      fontStyle: FontStyle.italic,
-      fontSize: 35.0 * k,
-    ));
+        textAlign: TextAlign.center,
+        fontWeight: FontWeight.w800,
+        fontStyle: FontStyle.italic,
+        fontSize: 35.0 * k,
+        fontFamily: 'Berkshire Swash'));
     pb.pushStyle(ui.TextStyle(color: Colors.green));
     pb.addText('peppapig');
 
